@@ -7,6 +7,6 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="dp.dev.countdowntimer.TimerController">
 
-    <Label text="00:00"/>
-    <Button text="start!"/>
+    <Label fx:id="timerLabel" text="00:00"/>
+    <Button text="start!" onAction="#handleStart"/>
 </VBox>
