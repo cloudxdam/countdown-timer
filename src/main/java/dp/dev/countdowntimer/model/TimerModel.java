@@ -9,7 +9,7 @@ package dp.dev.countdowntimer.model;
 public class TimerModel {
 
     private int durationSeconds;
-    private int remainingTime;
+    private int remainingSeconds;
     private TimeState state;
 
     /**
@@ -19,9 +19,10 @@ public class TimerModel {
      */
     public TimerModel(int durationSeconds)  {
         this.durationSeconds = durationSeconds;
-        this.remainingTime = durationSeconds;
+        this.remainingSeconds = durationSeconds;
     }
 
+    /* Getters & Setters */
     public int getDurationSeconds() {
         return durationSeconds;
     }
@@ -30,12 +31,12 @@ public class TimerModel {
         this.durationSeconds = durationSeconds;
     }
 
-    public int getRemainingTime() {
-        return remainingTime;
+    public int getRemainingSeconds() {
+        return remainingSeconds;
     }
 
-    public void setRemainingTime(int remainingTime) {
-        this.remainingTime = remainingTime;
+    public void setRemainingSeconds(int remainingSeconds) {
+        this.remainingSeconds = remainingSeconds;
     }
 
     public TimeState getState() {
@@ -44,5 +45,23 @@ public class TimerModel {
 
     public void setState(TimeState state) {
         this.state = state;
+    }
+
+    /**
+     * Decreases the remaining time by one second without going below zero.
+     */
+    public void decrementSecond() {
+        if (remainingSeconds > 0) {
+            remainingSeconds--;
+        }
+    }
+
+    /* Changing state methods */
+    public void start() {
+        state = TimeState.RUNNING;
+    }
+
+    public void pause() {
+        state = TimeState.PAUSED;
     }
 }
