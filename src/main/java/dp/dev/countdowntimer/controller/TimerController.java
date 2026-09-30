@@ -38,14 +38,22 @@ public class TimerController {
     private Label timerLabel;
 
     @FXML
+    private void initialize() {
+        updateTimerLabel();
+    }
+
+    @FXML
     private void handleStart() {
         timerModel.start();
         timeline.play();
     }
 
     @FXML
-    private void initialize() {
-        updateTimerLabel();
+    private void handlePause() {
+        timerModel.pause();
+        timeline.pause();
     }
+
+
 
 }

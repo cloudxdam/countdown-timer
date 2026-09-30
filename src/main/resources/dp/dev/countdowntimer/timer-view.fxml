@@ -9,4 +9,5 @@
 
     <Label fx:id="timerLabel" text="00:00"/>
     <Button text="start!" onAction="#handleStart"/>
+    <Button text="pause" onAction="#handlePause"/>
 </VBox>
