@@ -5,7 +5,7 @@
 
 <?import javafx.scene.control.Button?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="dp.dev.countdowntimer.TimerController">
+      fx:controller="dp.dev.countdowntimer.controller.TimerController">
 
     <Label fx:id="timerLabel" text="00:00"/>
     <Button text="start!" onAction="#handleStart"/>

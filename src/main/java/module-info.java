@@ -6,4 +6,6 @@ module dp.dev.countdowntimer {
 
     opens dp.dev.countdowntimer to javafx.fxml;
     exports dp.dev.countdowntimer;
+    exports dp.dev.countdowntimer.controller;
+    opens dp.dev.countdowntimer.controller to javafx.fxml;
 }

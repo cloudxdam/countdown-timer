@@ -1,4 +1,4 @@
-package dp.dev.countdowntimer;
+package dp.dev.countdowntimer.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
