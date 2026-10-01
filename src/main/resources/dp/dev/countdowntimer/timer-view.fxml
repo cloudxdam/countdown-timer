@@ -22,8 +22,10 @@
         </VBox>
     </HBox>
 
-    <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
-    <Button text="reset" onAction="#handleReset"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
+        <Button text="reset" onAction="#handleReset"/>
+    </HBox>
 
     <Label fx:id="timerLabel" text="00:00"/>
 </VBox>
