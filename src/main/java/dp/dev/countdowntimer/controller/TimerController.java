@@ -111,10 +111,12 @@ public class TimerController {
         } else if (timerModel.getState() == TimeState.PAUSED) {
             timerModel.start();
             timeline.play();
-        } else if (!timerModel.isFinished()) {
+        } else {
             updateTimerDuration();
-            timerModel.start();
-            timeline.play();
+            if (!timerModel.isFinished()) {
+                timerModel.start();
+                timeline.play();
+            }
         }
         updateActionButton();
         updateSpinnerState();
@@ -150,7 +152,7 @@ public class TimerController {
     }
 
     private void updateSpinnerState() {
-        boolean enabled = timerModel.getState() == TimeState.STOPPED && !timerModel.isFinished();
+        boolean enabled = timerModel.getState() == TimeState.STOPPED;
 
         minutesSpinner.setDisable(!enabled);
         secondsSpinner.setDisable(!enabled);
