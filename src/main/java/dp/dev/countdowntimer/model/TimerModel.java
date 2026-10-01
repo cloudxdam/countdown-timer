@@ -73,4 +73,13 @@ public class TimerModel {
         remainingSeconds = durationSeconds;
         state = TimeState.STOPPED;
     }
+
+    /**
+     * Returns whether the countdown has reached zero.
+     *
+     * @return true if no time remains, otherwise false
+     */
+    public boolean isFinished() {
+        return remainingSeconds == 0;
+    }
 }

@@ -25,7 +25,7 @@ public class TimerController {
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
             timerModel.decrementSecond();
 
-            if (timerModel.getRemainingSeconds() == 0) {
+            if (timerModel.isFinished()) {
                 timeline.stop();
             }
 
@@ -63,8 +63,10 @@ public class TimerController {
 
     @FXML
     private void handleStart() {
-        timerModel.start();
-        timeline.play();
+        if (!timerModel.isFinished()) {
+            timerModel.start();
+            timeline.play();
+        }
     }
 
     @FXML
