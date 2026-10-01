@@ -7,11 +7,20 @@
 <?import javafx.scene.chart.BubbleChart?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.shape.Sphere?>
+<?import javafx.scene.layout.HBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="dp.dev.countdowntimer.controller.TimerController">
 
-    <Spinner fx:id="minutesSpinner"/>
-    <Spinner fx:id="secondsSpinner"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <VBox>
+            <Label text="minutes"/>
+            <Spinner fx:id="minutesSpinner"/>
+        </VBox>
+        <VBox>
+            <Label text="seconds"/>
+            <Spinner fx:id="secondsSpinner"/>
+        </VBox>
+    </HBox>
 
     <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
     <Button text="reset" onAction="#handleReset"/>

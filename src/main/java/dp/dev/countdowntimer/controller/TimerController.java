@@ -19,7 +19,7 @@ import javafx.util.Duration;
  */
 public class TimerController {
 
-    private final TimerModel timerModel = new TimerModel(10);
+    private final TimerModel timerModel = new TimerModel(600);
     private Timeline timeline;
 
     @FXML
@@ -47,6 +47,7 @@ public class TimerController {
 
             updateTimerLabel();
             updateActionButton();
+            updateSpinnerState();
         }
         );
         timeline = new Timeline(keyFrame);
@@ -108,7 +109,6 @@ public class TimerController {
     /**
      * Updates the action button text according to the current timer state.
      */
-    @FXML
     private void updateActionButton() {
         switch (timerModel.getState()) {
             case TimeState.RUNNING -> actionButton.setText("Pause");
