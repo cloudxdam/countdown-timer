@@ -4,10 +4,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.chart.BubbleChart?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="dp.dev.countdowntimer.controller.TimerController">
 
     <Label fx:id="timerLabel" text="00:00"/>
     <Button text="start!" onAction="#handleStart"/>
     <Button text="pause" onAction="#handlePause"/>
+    <Button text="reset" onAction="#handleReset"/>
 </VBox>

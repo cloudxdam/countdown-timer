@@ -8,14 +8,27 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
+/**
+ * Controls the interaction between the timer view and the timer model.
+ *
+ * <p>Handles user actions and coordinates the countdown timeline.</p>
+ */
 public class TimerController {
 
     private final TimerModel timerModel = new TimerModel(300);
-    private final Timeline timeline;
+    private Timeline timeline;
 
+    /**
+     * Creates the timer timeline and configures it to execute every second.
+     */
     public TimerController() {
         KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> {
             timerModel.decrementSecond();
+
+            if (timerModel.getRemainingSeconds() == 0) {
+                timeline.stop();
+            }
+
             updateTimerLabel();
             }
         );
@@ -23,6 +36,9 @@ public class TimerController {
         timeline.setCycleCount(Animation.INDEFINITE);
     }
 
+    /**
+     * Updates the timer label with the remaining time in MM:SS format.
+     */
     private void updateTimerLabel() {
         int remainingSeconds = timerModel.getRemainingSeconds();
 
@@ -37,6 +53,9 @@ public class TimerController {
     @FXML
     private Label timerLabel;
 
+    /**
+     * Initializes the timer view with the current remaining time.
+     */
     @FXML
     private void initialize() {
         updateTimerLabel();
@@ -54,6 +73,11 @@ public class TimerController {
         timeline.pause();
     }
 
-
+    @FXML
+    private void handleReset() {
+        timerModel.reset();
+        timeline.stop();
+        updateTimerLabel();
+    }
 
 }

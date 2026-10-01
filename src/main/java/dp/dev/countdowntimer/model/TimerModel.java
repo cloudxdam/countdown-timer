@@ -64,4 +64,9 @@ public class TimerModel {
     public void pause() {
         state = TimeState.PAUSED;
     }
+
+    public void reset() {
+        remainingSeconds = durationSeconds;
+        state = TimeState.STOPPED;
+    }
 }
