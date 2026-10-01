@@ -1,10 +1,12 @@
 package dp.dev.countdowntimer.controller;
 
+import dp.dev.countdowntimer.model.TimeState;
 import dp.dev.countdowntimer.model.TimerModel;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
@@ -30,6 +32,7 @@ public class TimerController {
             }
 
             updateTimerLabel();
+            updateActionButton();
             }
         );
         timeline = new Timeline(keyFrame);
@@ -53,26 +56,43 @@ public class TimerController {
     @FXML
     private Label timerLabel;
 
+    @FXML
+    private Button actionButton;
+
     /**
      * Initializes the timer view with the current remaining time.
      */
     @FXML
     private void initialize() {
         updateTimerLabel();
+        updateActionButton();
     }
 
+    /**
+     * Starts, resumes or pauses the countdown depending on its current state.
+     */
     @FXML
-    private void handleStart() {
-        if (!timerModel.isFinished()) {
+    private void handleAction() {
+        if (timerModel.getState() == TimeState.RUNNING) {
+            timerModel.pause();
+            timeline.pause();
+        } else {
             timerModel.start();
             timeline.play();
         }
+        updateActionButton();
     }
 
+    /**
+     * Updates the action button text according to the current timer state.
+     */
     @FXML
-    private void handlePause() {
-        timerModel.pause();
-        timeline.pause();
+    private void updateActionButton() {
+        switch (timerModel.getState()) {
+            case TimeState.RUNNING -> actionButton.setText("Pause");
+            case TimeState.PAUSED -> actionButton.setText("Resume");
+            case TimeState.STOPPED -> actionButton.setText("Start");
+        }
     }
 
     @FXML
@@ -80,6 +100,6 @@ public class TimerController {
         timerModel.reset();
         timeline.stop();
         updateTimerLabel();
+        updateActionButton();
     }
-
 }

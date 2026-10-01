@@ -2,6 +2,7 @@ module dp.dev.countdowntimer {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires java.sql;
 
 
     opens dp.dev.countdowntimer to javafx.fxml;

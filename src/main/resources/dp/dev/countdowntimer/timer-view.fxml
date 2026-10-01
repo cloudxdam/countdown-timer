@@ -9,7 +9,6 @@
       fx:controller="dp.dev.countdowntimer.controller.TimerController">
 
     <Label fx:id="timerLabel" text="00:00"/>
-    <Button text="start!" onAction="#handleStart"/>
-    <Button text="pause" onAction="#handlePause"/>
+    <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
     <Button text="reset" onAction="#handleReset"/>
 </VBox>

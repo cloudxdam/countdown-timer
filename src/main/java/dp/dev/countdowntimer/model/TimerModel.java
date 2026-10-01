@@ -1,5 +1,7 @@
 package dp.dev.countdowntimer.model;
 
+import java.sql.Time;
+
 /**
  * Represents the state and configuration of a countdown timer.
  *
@@ -10,7 +12,7 @@ public class TimerModel {
 
     private int durationSeconds;
     private int remainingSeconds;
-    private TimeState state;
+    private TimeState state = TimeState.STOPPED;
 
     /**
      * Creates a new countdown timer with the specified duration.
@@ -20,6 +22,7 @@ public class TimerModel {
     public TimerModel(int durationSeconds)  {
         this.durationSeconds = durationSeconds;
         this.remainingSeconds = durationSeconds;
+        this.state = TimeState.STOPPED;
     }
 
     /* Getters & Setters */
