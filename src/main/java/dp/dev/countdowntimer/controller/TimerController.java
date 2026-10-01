@@ -10,7 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+
+import java.util.Objects;
 
 /**
  * Controls the interaction between the timer view and the timer model.
@@ -21,6 +25,7 @@ public class TimerController {
 
     private final TimerModel timerModel = new TimerModel(600);
     private Timeline timeline;
+    private MediaPlayer alarmPlayer;
 
     @FXML
     private Label timerLabel;
@@ -43,6 +48,8 @@ public class TimerController {
 
             if (timerModel.isFinished()) {
                 timeline.stop();
+                alarmPlayer.seek(Duration.ZERO);
+                alarmPlayer.play();
             }
 
             updateTimerLabel();
@@ -52,6 +59,13 @@ public class TimerController {
         );
         timeline = new Timeline(keyFrame);
         timeline.setCycleCount(Animation.INDEFINITE);
+
+        String soundPath = Objects.requireNonNull(
+                TimerController.class.getResource("/sounds/alarm_sound.wav")
+        ).toExternalForm();
+
+        Media media = new Media(soundPath);
+        alarmPlayer = new MediaPlayer(media);
     }
 
     /**
