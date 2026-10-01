@@ -5,10 +5,16 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.chart.BubbleChart?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.shape.Sphere?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="dp.dev.countdowntimer.controller.TimerController">
 
-    <Label fx:id="timerLabel" text="00:00"/>
+    <Spinner fx:id="minutesSpinner"/>
+    <Spinner fx:id="secondsSpinner"/>
+
     <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
     <Button text="reset" onAction="#handleReset"/>
+
+    <Label fx:id="timerLabel" text="00:00"/>
 </VBox>

@@ -22,32 +22,20 @@ public class TimerModel {
     public TimerModel(int durationSeconds)  {
         this.durationSeconds = durationSeconds;
         this.remainingSeconds = durationSeconds;
-        this.state = TimeState.STOPPED;
     }
 
-    /* Getters & Setters */
+    /* Getters */
     public int getDurationSeconds() {
         return durationSeconds;
     }
 
-    public void setDurationSeconds(int durationSeconds) {
-        this.durationSeconds = durationSeconds;
-    }
 
     public int getRemainingSeconds() {
         return remainingSeconds;
     }
 
-    public void setRemainingSeconds(int remainingSeconds) {
-        this.remainingSeconds = remainingSeconds;
-    }
-
     public TimeState getState() {
         return state;
-    }
-
-    public void setState(TimeState state) {
-        this.state = state;
     }
 
     /**
@@ -84,5 +72,15 @@ public class TimerModel {
      */
     public boolean isFinished() {
         return remainingSeconds == 0;
+    }
+
+    /**
+     * Configures the timer with a new duration and resets the remaining time.
+     *
+     * @param durationSeconds the new duration in seconds
+     */
+    public void setDuration(int durationSeconds) {
+        this.durationSeconds = durationSeconds;
+        this.remainingSeconds = durationSeconds;
     }
 }

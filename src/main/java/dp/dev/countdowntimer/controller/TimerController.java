@@ -8,6 +8,8 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.util.Duration;
 
 /**
@@ -19,6 +21,18 @@ public class TimerController {
 
     private final TimerModel timerModel = new TimerModel(10);
     private Timeline timeline;
+
+    @FXML
+    private Label timerLabel;
+
+    @FXML
+    private Button actionButton;
+
+    @FXML
+    private Spinner<Integer> minutesSpinner;
+
+    @FXML
+    private Spinner<Integer> secondsSpinner;
 
     /**
      * Creates the timer timeline and configures it to execute every second.
@@ -33,7 +47,7 @@ public class TimerController {
 
             updateTimerLabel();
             updateActionButton();
-            }
+        }
         );
         timeline = new Timeline(keyFrame);
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -53,19 +67,22 @@ public class TimerController {
         timerLabel.setText(time);
     }
 
-    @FXML
-    private Label timerLabel;
-
-    @FXML
-    private Button actionButton;
-
     /**
      * Initializes the timer view with the current remaining time.
      */
     @FXML
     private void initialize() {
+        int duration = timerModel.getDurationSeconds();
+
+        minutesSpinner.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, duration / 60));
+
+        secondsSpinner.setValueFactory(
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, duration % 60));
+
         updateTimerLabel();
         updateActionButton();
+        updateSpinnerState();
     }
 
     /**
@@ -76,11 +93,16 @@ public class TimerController {
         if (timerModel.getState() == TimeState.RUNNING) {
             timerModel.pause();
             timeline.pause();
-        } else {
+        } else if (timerModel.getState() == TimeState.PAUSED) {
+            timerModel.start();
+            timeline.play();
+        } else if (!timerModel.isFinished()) {
+            updateTimerDuration();
             timerModel.start();
             timeline.play();
         }
         updateActionButton();
+        updateSpinnerState();
     }
 
     /**
@@ -101,5 +123,22 @@ public class TimerController {
         timeline.stop();
         updateTimerLabel();
         updateActionButton();
+        updateSpinnerState();
+    }
+
+    private void updateTimerDuration() {
+        int minutes = minutesSpinner.getValue();
+        int seconds = secondsSpinner.getValue();
+
+        int totalSeconds = minutes * 60 + seconds;
+
+        timerModel.setDuration(totalSeconds);
+    }
+
+    private void updateSpinnerState() {
+        boolean enabled = timerModel.getState() == TimeState.STOPPED && !timerModel.isFinished();
+
+        minutesSpinner.setDisable(!enabled);
+        secondsSpinner.setDisable(!enabled);
     }
 }
