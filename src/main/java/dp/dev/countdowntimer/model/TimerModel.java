@@ -53,6 +53,10 @@ public class TimerModel {
     public void decrementSecond() {
         if (remainingSeconds > 0) {
             remainingSeconds--;
+
+            if (remainingSeconds == 0) {
+                state = TimeState.STOPPED;
+            }
         }
     }
 

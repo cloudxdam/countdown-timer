@@ -15,7 +15,7 @@ import javafx.util.Duration;
  */
 public class TimerController {
 
-    private final TimerModel timerModel = new TimerModel(300);
+    private final TimerModel timerModel = new TimerModel(10);
     private Timeline timeline;
 
     /**
