@@ -1,0 +1,44 @@
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build project
+        run: mvn clean package
+
+      - name: Create runtime image
+        run: mvn javafx:jlink
+
+      - name: Create Windows installer
+        run: |
+          jpackage `
+            --type exe `
+            --name Countdown-Timer `
+            --app-version 1.0.0 `
+            --input target `
+            --main-jar countdown-timer-1.0.0.jar `
+            --main-class dp.dev.countdowntimer.TimerApplication `
+            --runtime-image target/app `
+            --icon src/main/resources/icons/cd-timer-icon.ico `
+            --dest dist
+
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: countdown-timer-windows
+          path: dist/*.exe
