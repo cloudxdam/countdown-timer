@@ -35,6 +35,8 @@ jobs:
             --main-class dp.dev.countdowntimer.TimerApplication `
             --runtime-image target/app `
             --icon src/main/resources/icons/cd-timer-icon.ico `
+            --win-shortcut `
+            --win-menu `
             --dest dist
 
       - name: Upload Windows installer
