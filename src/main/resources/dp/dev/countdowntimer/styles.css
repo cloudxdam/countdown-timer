@@ -1,0 +1,89 @@
+.root {
+    -fx-background-color: #070a12;
+}
+
+.timer-label {
+    -fx-text-fill: #00c3fe;
+    -fx-font-size: 72px;
+    -fx-font-weight: bold;
+}
+
+.time-input {
+    -fx-spacing: 6px;
+}
+
+.time-input .label {
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.time-input .spinner {
+    -fx-background-color: #111827;
+    -fx-border-color: #2a3445;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+}
+
+.time-input .spinner .text-field {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #f8fafc;
+    -fx-font-size: 16px;
+    -fx-alignment: CENTER;
+}
+
+.time-input .spinner .increment-arrow-button,
+.time-input .spinner .decrement-arrow-button {
+    -fx-background-color: #111827;
+}
+
+.time-input .spinner .increment-arrow-button .increment-arrow,
+.time-input .spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #a0a7b5;
+}
+
+.action-button,
+.reset-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 24px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.action-button {
+    -fx-background-color: #00d4fe;
+    -fx-text-fill: #070a12;
+}
+
+.reset-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #a0a7b5;
+    -fx-border-color: #2a3445;
+}
+
+.action-button:hover {
+    -fx-background-color: #33dcff;
+}
+
+.reset-button:hover {
+    -fx-background-color: #111827;
+    -fx-text-fill: #ffffff;
+}
+
+.action-button:pressed {
+    -fx-background-color: #00b8dc;
+}
+
+.reset-button:pressed {
+    -fx-background-color: #1a2333;
+}
+
+.time-input .spinner:disabled {
+    -fx-opacity: 0.5;
+}
+
+.time-input .spinner:disabled .text-field {
+    -fx-text-fill: #6b7280;
+}

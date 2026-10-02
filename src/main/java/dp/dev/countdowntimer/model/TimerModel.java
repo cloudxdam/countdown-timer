@@ -1,7 +1,5 @@
 package dp.dev.countdowntimer.model;
 
-import java.sql.Time;
-
 /**
  * Represents the state and configuration of a countdown timer.
  *

@@ -135,8 +135,12 @@ public class TimerController {
 
     @FXML
     private void handleReset() {
-        timerModel.reset();
+        alarmPlayer.stop();
+        alarmPlayer.seek(Duration.ZERO);
+
+        updateTimerDuration();
         timeline.stop();
+
         updateTimerLabel();
         updateActionButton();
         updateSpinnerState();
@@ -156,5 +160,12 @@ public class TimerController {
 
         minutesSpinner.setDisable(!enabled);
         secondsSpinner.setDisable(!enabled);
+    }
+
+    /**
+     * Releases resources used by the timer controller.
+     */
+    public void dispose() {
+        alarmPlayer.dispose();
     }
 }

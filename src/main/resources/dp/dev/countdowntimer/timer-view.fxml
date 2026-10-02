@@ -4,28 +4,32 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.chart.BubbleChart?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.shape.Sphere?>
 <?import javafx.scene.layout.HBox?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="dp.dev.countdowntimer.controller.TimerController">
+<VBox
+      alignment="CENTER"
+      spacing="10.0"
+      minWidth="240.0"
+      minHeight="420.0"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dp.dev.countdowntimer.controller.TimerController"
+      stylesheets="@styles.css">
 
     <HBox spacing="10.0" alignment="CENTER">
-        <VBox>
-            <Label text="minutes"/>
-            <Spinner fx:id="minutesSpinner"/>
+        <VBox styleClass="time-input" alignment="CENTER">
+            <Label text="Minutes"/>
+            <Spinner fx:id="minutesSpinner" styleClass="spinner"/>
         </VBox>
-        <VBox>
-            <Label text="seconds"/>
-            <Spinner fx:id="secondsSpinner"/>
+        <VBox styleClass="time-input" alignment="CENTER">
+            <Label text="Seconds"/>
+            <Spinner fx:id="secondsSpinner" styleClass="spinner"/>
         </VBox>
     </HBox>
 
     <HBox spacing="10.0" alignment="CENTER">
-        <Button fx:id="actionButton" text="start!" onAction="#handleAction"/>
-        <Button text="reset" onAction="#handleReset"/>
+        <Button fx:id="actionButton" text="Start" onAction="#handleAction" styleClass="action-button"/>
+        <Button text="Reset" onAction="#handleReset" styleClass="reset-button"/>
     </HBox>
 
-    <Label fx:id="timerLabel" text="00:00"/>
+    <Label fx:id="timerLabel" text="00:00" styleClass="timer-label"/>
 </VBox>
