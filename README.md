@@ -22,6 +22,8 @@ The application allows users to configure a countdown duration, start, pause, re
 * **FXML**
 * **JavaFX CSS**
 * **Maven**
+* **JUnit 5**
+* **GitHub Actions**
 
 ## Architecture
 
@@ -56,7 +58,7 @@ src/
 │           ├── timer-view.fxml
 │           ├── styles.css
 │           └── sounds/
-│               └── alarm.wav
+│               └── alarm_sound.wav
 ```
 
 ## Requirements
@@ -81,7 +83,17 @@ mvn clean package
 
 The application can then be launched from IntelliJ IDEA using the configured JavaFX run configuration.
 
+## Distribution
+
+Pre-built installers are available for:
+
+* **Linux** — `.deb` package
+* **Windows** — `.exe` installer
+
+The installers include a bundled Java runtime, so Java does not need to be installed separately on the target system.
+
+See the [Releases](../../releases) section to download the latest version.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
