@@ -6,7 +6,7 @@
 
     <groupId>dp.dev</groupId>
     <artifactId>countdown-timer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>countdown-timer</name>
 
     <properties>
