@@ -139,6 +139,7 @@ public class TimerController {
         alarmPlayer.seek(Duration.ZERO);
 
         updateTimerDuration();
+        timerModel.reset();
         timeline.stop();
 
         updateTimerLabel();
