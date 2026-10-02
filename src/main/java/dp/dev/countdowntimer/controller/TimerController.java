@@ -83,7 +83,7 @@ public class TimerController {
     }
 
     /**
-     * Initializes the timer view with the current remaining time.
+     * Initializes the timer controls and synchronizes the view with the timer model.
      */
     @FXML
     private void initialize() {
@@ -133,6 +133,9 @@ public class TimerController {
         }
     }
 
+    /**
+     * Resets the timer to the currently selected duration and stops the countdown.
+     */
     @FXML
     private void handleReset() {
         alarmPlayer.stop();
@@ -147,6 +150,9 @@ public class TimerController {
         updateSpinnerState();
     }
 
+    /**
+     * Updates the timer duration using the values selected in the minute and second spinners.
+     */
     private void updateTimerDuration() {
         int minutes = minutesSpinner.getValue();
         int seconds = secondsSpinner.getValue();
@@ -156,6 +162,9 @@ public class TimerController {
         timerModel.setDuration(totalSeconds);
     }
 
+    /**
+     * Enables the duration controls only when the timer is stopped.
+     */
     private void updateSpinnerState() {
         boolean enabled = timerModel.getState() == TimeState.STOPPED;
 

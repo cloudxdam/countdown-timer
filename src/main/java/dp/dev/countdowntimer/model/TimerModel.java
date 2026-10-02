@@ -38,6 +38,9 @@ public class TimerModel {
 
     /**
      * Decreases the remaining time by one second without going below zero.
+     *
+     * <p>The timer automatically changes to {@link TimeState#STOPPED}
+     * when the remaining time reaches zero.</p>
      */
     public void decrementSecond() {
         if (remainingSeconds > 0) {
@@ -49,15 +52,24 @@ public class TimerModel {
         }
     }
 
-    /* Changing state methods */
+    /**
+     * Changes the timer state to {@link TimeState#RUNNING}.
+     */
     public void start() {
         state = TimeState.RUNNING;
     }
 
+    /**
+     * Changes the timer state to {@link TimeState#PAUSED}.
+     */
     public void pause() {
         state = TimeState.PAUSED;
     }
 
+    /**
+     * Resets the remaining time to the configured duration
+     * and changes the timer state to {@link TimeState#STOPPED}.
+     */
     public void reset() {
         remainingSeconds = durationSeconds;
         state = TimeState.STOPPED;

@@ -9,7 +9,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Entry point for the Countdown Timer JavaFX application.
+ *
+ * <p>Initializes the application window and releases controller resources
+ * when the application closes.</p>
+ */
 public class TimerApplication extends Application {
+
+    /**
+     * Initializes the main application window and loads the timer view.
+     *
+     * @param stage the primary application window
+     * @throws IOException if the FXML view cannot be loaded
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(TimerApplication.class.getResource("timer-view.fxml"));
